@@ -17,7 +17,10 @@ const Register = ({navigation}) => {
           <Gap height={24} />
           <Input label="Password" secureTextEntry />
           <Gap height={40} />
-          <Button title="Continue" />
+          <Button
+            title="Continue"
+            onPress={() => navigation.navigate('UploadPhoto')}
+          />
           <Gap height={40} />
         </ScrollView>
       </View>
