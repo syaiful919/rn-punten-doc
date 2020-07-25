@@ -23,7 +23,10 @@ const Doctor = ({navigation}) => {
         <ScrollView showsVerticalScrollIndicator={false}>
           <View style={styles.wrapperSection}>
             <Gap height={30} />
-            <HomeProfile profile={profile} />
+            <HomeProfile
+              profile={profile}
+              onPress={() => navigation.navigate('UserProfile')}
+            />
             <Text style={styles.welcome}>
               Mau konsultasi dengan siapa hari ini?
             </Text>
@@ -32,7 +35,10 @@ const Doctor = ({navigation}) => {
             <ScrollView horizontal showsHorizontalScrollIndicator={false}>
               <View style={styles.category}>
                 <Gap width={32} />
-                <DoctorCategory category="psikiater" />
+                <DoctorCategory
+                  category="psikiater"
+                  onPress={() => navigation.navigate('ChooseDoctor')}
+                />
                 <DoctorCategory category="dokter umum" />
                 <DoctorCategory category="dokter obat" />
                 <Gap width={22} />
@@ -46,6 +52,7 @@ const Doctor = ({navigation}) => {
               name="Alexa Rachel"
               desc="Pediatrician"
               avatar={{uri: 'https://placeimg.com/480/480/people'}}
+              onPress={() => navigation.navigate('DoctorProfile')}
             />
             <RatedDoctor
               name="Alexa Rachel"

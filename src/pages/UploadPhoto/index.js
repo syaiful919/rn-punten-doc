@@ -22,7 +22,11 @@ const UploadPhoto = ({navigation}) => {
           <Text style={styles.profession}>Software Developer</Text>
         </View>
         <View>
-          <Button disable={!hasPhoto} title="Upload and Continue" />
+          <Button
+            disable={!hasPhoto}
+            title="Upload and Continue"
+            onPress={() => navigation.replace('MainApp')}
+          />
           <Gap height={30} />
           <Link
             title="Skip for this"

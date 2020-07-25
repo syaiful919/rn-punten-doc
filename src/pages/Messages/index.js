@@ -12,7 +12,7 @@ const Messages = ({navigation}) => {
           profile={{uri: 'https://placeimg.com/480/480/people'}}
           name="Alexa Rachel"
           desc="Oke menurut pak dokter bagaimana unt..."
-          onPress={() => navigation.navigate('ChooseDoctor')}
+          onPress={() => navigation.navigate('Chatting')}
         />
         <List
           profile={{uri: 'https://placeimg.com/480/480/people'}}

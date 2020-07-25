@@ -5,15 +5,21 @@ import {fonts, colors} from '../../utils';
 
 const Chatting = ({navigation}) => {
   const [chatContent, setChatContent] = useState('');
-  const dataDoctor = {data: {fullName: 'tes'}};
+  const dataDoctor = {
+    data: {
+      fullName: 'Nairobi Putri Hayza',
+      profession: 'Dentist',
+      photo: 'https://placeimg.com/480/480/people',
+    },
+  };
 
   return (
     <View style={styles.page}>
       <Header
         type="dark-profile"
-        title="Nairobi Putri Hayza"
-        desc="Dokter Anak"
-        photo={{uri: 'https://placeimg.com/480/480/people'}}
+        title={dataDoctor.data.fullName}
+        desc={dataDoctor.data.profession}
+        photo={{uri: dataDoctor.data.photo}}
         onPress={() => navigation.goBack()}
       />
       <View style={styles.content}>
