@@ -1,14 +1,21 @@
 import React from 'react';
 import {StyleSheet, View} from 'react-native';
 import {Gap, Header, List, Profile} from '../../components';
+import {Fire} from '../../config';
+import {showError} from '../../utils';
 
-const UserProfile = ({navigation}) => {
-  const profile = {
-    fullName: 'Nairobi Putri Hayza',
-    profession: 'Dentist',
-    photo: 'https://placeimg.com/480/480/people',
+const UserProfile = ({navigation, route}) => {
+  const profile = route.params;
+  const signOut = () => {
+    Fire.auth()
+      .signOut()
+      .then(() => {
+        navigation.replace('GetStarted');
+      })
+      .catch((err) => {
+        showError(err.message);
+      });
   };
-
   return (
     <View style={styles.page}>
       <Header title="Profile" onPress={() => navigation.goBack()} />
@@ -17,7 +24,7 @@ const UserProfile = ({navigation}) => {
         <Profile
           name={profile.fullName}
           desc={profile.profession}
-          photo={{uri: profile.photo}}
+          photo={profile.photo}
         />
       )}
       <Gap height={14} />
@@ -45,6 +52,7 @@ const UserProfile = ({navigation}) => {
         desc="Last Update Yesterday"
         type="next"
         icon="help"
+        onPress={signOut}
       />
     </View>
   );

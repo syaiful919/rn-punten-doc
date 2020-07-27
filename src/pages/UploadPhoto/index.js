@@ -2,30 +2,63 @@ import React, {useState} from 'react';
 import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {IconAddPhoto, IconRemovePhoto, ILNullPhoto} from '../../assets';
 import {Button, Gap, Header, Link} from '../../components';
-import {colors, fonts} from '../../utils';
+import {colors, fonts, showError, storeData} from '../../utils';
+import {Fire} from '../../config';
+import ImagePicker from 'react-native-image-picker';
 
-const UploadPhoto = ({navigation}) => {
+const UploadPhoto = ({navigation, route}) => {
+  const {fullName, profession, uid} = route.params;
+
   const [hasPhoto, setHasPhoto] = useState(false);
   const [photo, setPhoto] = useState(ILNullPhoto);
+  const [photoForDB, setPhotoForDB] = useState('');
+  const getImage = () => {
+    ImagePicker.launchImageLibrary(
+      {quality: 0.5, maxWidth: 200, maxHeight: 200},
+      (response) => {
+        if (response.didCancel || response.error) {
+          showError('oops, tidak ada foto yang dipilih');
+        } else {
+          const source = {uri: response.uri};
 
+          setPhotoForDB(`data:${response.type};base64, ${response.data}`);
+          setPhoto(source);
+          setHasPhoto(true);
+        }
+      },
+    );
+  };
+
+  const uploadAndContinue = () => {
+    Fire.database()
+      .ref('users/' + uid + '/')
+      .update({photo: photoForDB});
+
+    const data = route.params;
+    data.photo = photoForDB;
+
+    storeData('user', data);
+
+    navigation.replace('MainApp');
+  };
   return (
     <View style={styles.page}>
       <Header onPress={() => navigation.goBack()} title="Upload Photo" />
       <View style={styles.content}>
         <View style={styles.profile}>
-          <TouchableOpacity style={styles.avatarWrapper}>
+          <TouchableOpacity style={styles.avatarWrapper} onPress={getImage}>
             <Image source={photo} style={styles.avatar} />
             {hasPhoto && <IconRemovePhoto style={styles.addPhoto} />}
             {!hasPhoto && <IconAddPhoto style={styles.addPhoto} />}
           </TouchableOpacity>
-          <Text style={styles.name}>Syaiful Salam</Text>
-          <Text style={styles.profession}>Software Developer</Text>
+          <Text style={styles.name}>{fullName}</Text>
+          <Text style={styles.profession}>{profession}</Text>
         </View>
         <View>
           <Button
             disable={!hasPhoto}
             title="Upload and Continue"
-            onPress={() => navigation.replace('MainApp')}
+            onPress={uploadAndContinue}
           />
           <Gap height={30} />
           <Link

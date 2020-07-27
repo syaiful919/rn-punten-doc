@@ -7,15 +7,30 @@ import {
   NewsItem,
   RatedDoctor,
 } from '../../components';
-import {colors, fonts} from '../../utils';
+import {colors, fonts, showError, getData} from '../../utils';
 import {ILNullPhoto} from '../../assets';
+import {Fire} from '../../config';
 
 const Doctor = ({navigation}) => {
   const [profile, setProfile] = useState({
     photo: ILNullPhoto,
-    fullName: 'Syaiful Izzuddin Salam',
-    profession: 'Software Developer',
+    fullName: '',
+    profession: '',
   });
+
+  useEffect(() => {
+    navigation.addListener('focus', () => {
+      getUserData();
+    });
+  }, [navigation]);
+
+  const getUserData = () => {
+    getData('user').then((res) => {
+      const data = res;
+      data.photo = res?.photo?.length > 1 ? {uri: res.photo} : ILNullPhoto;
+      setProfile(res);
+    });
+  };
 
   return (
     <View style={styles.page}>
@@ -25,7 +40,7 @@ const Doctor = ({navigation}) => {
             <Gap height={30} />
             <HomeProfile
               profile={profile}
-              onPress={() => navigation.navigate('UserProfile')}
+              onPress={() => navigation.navigate('UserProfile', profile)}
             />
             <Text style={styles.welcome}>
               Mau konsultasi dengan siapa hari ini?
