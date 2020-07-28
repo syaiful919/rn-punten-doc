@@ -3,17 +3,9 @@ import {StyleSheet, View} from 'react-native';
 import {Button, Header, Profile, ProfileItem, Gap} from '../../components';
 import {colors} from '../../utils';
 
-const DoctorProfile = ({navigation}) => {
-  const dataDoctor = {
-    data: {
-      fullName: 'Nairobi Putri Hayza',
-      profession: 'Dentist',
-      photo: 'https://placeimg.com/480/480/people',
-      university: 'Universitas Indonesia, 2020',
-      hospital_address: 'Rumah Sakit Umum, Bandung',
-      str_number: '0000116622081996',
-    },
-  };
+const DoctorProfile = ({navigation, route}) => {
+  const dataDoctor = route.params;
+
   return (
     <View style={styles.page}>
       <Header title="Doctor Profile" onPress={() => navigation.goBack()} />
@@ -32,7 +24,7 @@ const DoctorProfile = ({navigation}) => {
       <View style={styles.action}>
         <Button
           title="Start Consultation"
-          onPress={() => navigation.navigate('Chatting')}
+          onPress={() => navigation.navigate('Chatting', dataDoctor)}
         />
       </View>
     </View>
