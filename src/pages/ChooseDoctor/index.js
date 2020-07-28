@@ -3,7 +3,7 @@ import {StyleSheet, View} from 'react-native';
 import {Header, List} from '../../components';
 import {colors} from '../../utils';
 
-const ChooseDoctor = ({navigation}) => {
+const ChooseDoctor = ({navigation, route}) => {
   return (
     <View style={styles.page}>
       <Header

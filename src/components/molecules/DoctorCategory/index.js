@@ -11,7 +11,7 @@ const DoctorCategory = ({category, onPress}) => {
     if (category === 'psikiater') {
       return <ILCatPsikiater style={styles.illustration} />;
     }
-    if (category === 'dokter obat') {
+    if (category === 'dokter anak' || category === 'dokter saraf') {
       return <ILCatObat style={styles.illustration} />;
     }
     return <ILCatUmum style={styles.illustration} />;

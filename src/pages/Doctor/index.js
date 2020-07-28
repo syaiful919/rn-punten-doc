@@ -12,6 +12,9 @@ import {ILNullPhoto} from '../../assets';
 import {Fire} from '../../config';
 
 const Doctor = ({navigation}) => {
+  const [news, setNews] = useState([]);
+  const [categoryDoctor, setCategoryDoctor] = useState([]);
+  const [doctors, setDoctors] = useState([]);
   const [profile, setProfile] = useState({
     photo: ILNullPhoto,
     fullName: '',
@@ -19,6 +22,9 @@ const Doctor = ({navigation}) => {
   });
 
   useEffect(() => {
+    getCategoryDoctor();
+    getTopRatedDoctors();
+    getNews();
     navigation.addListener('focus', () => {
       getUserData();
     });
@@ -32,12 +38,68 @@ const Doctor = ({navigation}) => {
     });
   };
 
+  const getTopRatedDoctors = () => {
+    Fire.database()
+      .ref('doctors/')
+      .orderByChild('rate')
+      .limitToLast(3)
+      .once('value')
+      .then((res) => {
+        if (res.val()) {
+          const oldData = res.val();
+          const data = [];
+          Object.keys(oldData).map((key) => {
+            data.push({
+              id: key,
+              data: oldData[key],
+            });
+          });
+          setDoctors(data);
+        }
+      })
+      .catch((err) => {
+        showError(err.message);
+      });
+  };
+
+  const getCategoryDoctor = () => {
+    Fire.database()
+      .ref('doctor_categories/')
+      .once('value')
+      .then((res) => {
+        if (res.val()) {
+          const data = res.val();
+          const filterData = data.filter((el) => el !== null);
+          setCategoryDoctor(filterData);
+        }
+      })
+      .catch((err) => {
+        showError(err.message);
+      });
+  };
+
+  const getNews = () => {
+    Fire.database()
+      .ref('news/')
+      .once('value')
+      .then((res) => {
+        if (res.val()) {
+          const data = res.val();
+          const filterData = data.filter((el) => el !== null);
+          setNews(filterData);
+        }
+      })
+      .catch((err) => {
+        showError(err.message);
+      });
+  };
+
   return (
     <View style={styles.page}>
       <View style={styles.content}>
         <ScrollView showsVerticalScrollIndicator={false}>
           <View style={styles.wrapperSection}>
-            <Gap height={30} />
+            <Gap height={32} />
             <HomeProfile
               profile={profile}
               onPress={() => navigation.navigate('UserProfile', profile)}
@@ -50,12 +112,15 @@ const Doctor = ({navigation}) => {
             <ScrollView horizontal showsHorizontalScrollIndicator={false}>
               <View style={styles.category}>
                 <Gap width={32} />
-                <DoctorCategory
-                  category="psikiater"
-                  onPress={() => navigation.navigate('ChooseDoctor')}
-                />
-                <DoctorCategory category="dokter umum" />
-                <DoctorCategory category="dokter obat" />
+                {categoryDoctor.map((item) => {
+                  return (
+                    <DoctorCategory
+                      key={`category-${item.id}`}
+                      category={item.category}
+                      onPress={() => navigation.navigate('ChooseDoctor', item)}
+                    />
+                  );
+                })}
                 <Gap width={22} />
               </View>
             </ScrollView>
@@ -63,39 +128,30 @@ const Doctor = ({navigation}) => {
           <View style={styles.wrapperSection}>
             <Text style={styles.sectionLabel}>Top Rated Doctors</Text>
             <Gap height={16} />
-            <RatedDoctor
-              name="Alexa Rachel"
-              desc="Pediatrician"
-              avatar={{uri: 'https://placeimg.com/480/480/people'}}
-              onPress={() => navigation.navigate('DoctorProfile')}
-            />
-            <RatedDoctor
-              name="Alexa Rachel"
-              desc="Pediatrician"
-              avatar={{uri: 'https://placeimg.com/480/480/people'}}
-            />
-            <RatedDoctor
-              name="Alexa Rachel"
-              desc="Pediatrician"
-              avatar={{uri: 'https://placeimg.com/480/480/people'}}
-            />
-            <Text style={styles.sectionLabel}>Good News</Text>
+            {doctors.map((doctor) => {
+              return (
+                <RatedDoctor
+                  key={doctor.id}
+                  name={doctor.data.fullName}
+                  desc={doctor.data.profession}
+                  avatar={{uri: doctor.data.photo}}
+                  rate={doctor.data.rate}
+                  onPress={() => navigation.navigate('DoctorProfile', doctor)}
+                />
+              );
+            })}
+            <Text style={styles.sectionLabel}>Top Health News</Text>
           </View>
-          <NewsItem
-            title="Is it safe to stay at home during coronavirus?"
-            date="Today"
-            image="https://placeimg.com/640/480/arch"
-          />
-          <NewsItem
-            title="Is it safe to stay at home during coronavirus?"
-            date="Today"
-            image="https://placeimg.com/640/480/arch"
-          />
-          <NewsItem
-            title="Is it safe to stay at home during coronavirus?"
-            date="Today"
-            image="https://placeimg.com/640/480/arch"
-          />
+          {news.map((item) => {
+            return (
+              <NewsItem
+                key={`news-${item.id}`}
+                title={item.title}
+                date={item.date}
+                image={item.image}
+              />
+            );
+          })}
           <Gap height={30} />
         </ScrollView>
       </View>

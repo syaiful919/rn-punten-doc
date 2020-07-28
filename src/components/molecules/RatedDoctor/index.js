@@ -3,7 +3,11 @@ import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {IconStar} from '../../../assets';
 import {colors, fonts} from '../../../utils';
 
-const RatedDoctor = ({name, desc, avatar, onPress}) => {
+const RatedDoctor = ({name, desc, avatar, onPress, rate}) => {
+  let arr = [];
+  for (let i = 0; i < rate; i++) {
+    arr.push(<IconStar key={i} />);
+  }
   return (
     <TouchableOpacity style={styles.container} onPress={onPress}>
       <Image source={avatar} style={styles.avatar} />
@@ -12,11 +16,9 @@ const RatedDoctor = ({name, desc, avatar, onPress}) => {
         <Text style={styles.category}>{desc}</Text>
       </View>
       <View style={styles.rate}>
-        <IconStar />
-        <IconStar />
-        <IconStar />
-        <IconStar />
-        <IconStar />
+        {arr.map((e) => {
+          return e;
+        })}
       </View>
     </TouchableOpacity>
   );
