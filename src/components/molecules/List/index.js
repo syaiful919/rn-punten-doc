@@ -30,7 +30,9 @@ const List = ({profile, name, desc, type, onPress, icon}) => {
       {icon ? <Icon /> : <Image source={profile} style={styles.avatar} />}
       <View style={styles.content}>
         <Text style={styles.name}>{name}</Text>
-        <Text style={styles.desc}>{desc}</Text>
+        <Text numberOfLines={1} style={styles.desc}>
+          {desc}
+        </Text>
       </View>
       {type === 'next' && <IconNext />}
     </TouchableOpacity>
@@ -59,6 +61,5 @@ const styles = StyleSheet.create({
     fontSize: 12,
     fontFamily: fonts.primary[300],
     color: colors.text.secondary,
-    textTransform: 'capitalize',
   },
 });
