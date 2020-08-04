@@ -6,6 +6,10 @@ import {showError} from '../../utils';
 
 const UserProfile = ({navigation, route}) => {
   const profile = route.params;
+  const changeLangMsg = 'Sorry, this feature is not available right now';
+  const giveRateMsg =
+    'Sorry, Punten Doc is not available on Playstore right now';
+
   const signOut = () => {
     Fire.auth()
       .signOut()
@@ -16,6 +20,15 @@ const UserProfile = ({navigation, route}) => {
         showError(err.message);
       });
   };
+
+  const changeLang = () => {
+    showError(changeLangMsg);
+  };
+
+  const rateUs = () => {
+    showError(giveRateMsg);
+  };
+
   return (
     <View style={styles.page}>
       <Header title="Profile" onPress={() => navigation.goBack()} />
@@ -30,26 +43,28 @@ const UserProfile = ({navigation, route}) => {
       <Gap height={14} />
       <List
         name="Edit Profile"
-        desc="Last Update Yesterday"
+        desc="Tap here if you want to update your profile"
         type="next"
         icon="edit-profile"
         onPress={() => navigation.navigate('UpdateProfile')}
       />
       <List
         name="Languange"
-        desc="Last Update Yesterday"
+        desc="Tap here if you want to change app language"
         type="next"
         icon="language"
+        onPress={changeLang}
       />
       <List
         name="Give Us Rate"
-        desc="Last Update Yesterday"
+        desc="On Google Playstore"
         type="next"
         icon="rate"
+        onPress={rateUs}
       />
       <List
         name="Sign Out"
-        desc="Last Update Yesterday"
+        desc="tap here if you want to sign out form your account "
         type="next"
         icon="help"
         onPress={signOut}

@@ -78,6 +78,6 @@ const styles = StyleSheet.create({
     color: colors.text.primary,
     marginTop: 40,
     marginBottom: 40,
-    maxWidth: 153,
+    maxWidth: 156,
   },
 });

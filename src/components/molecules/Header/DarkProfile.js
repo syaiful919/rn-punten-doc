@@ -43,6 +43,6 @@ const styles = StyleSheet.create({
     fontFamily: fonts.primary.normal,
     marginTop: 6,
     textAlign: 'center',
-    color: colors.text.subTitle,
+    color: colors.text.disabled,
   },
 });

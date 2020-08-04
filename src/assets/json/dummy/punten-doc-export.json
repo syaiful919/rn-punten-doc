@@ -1,4 +1,84 @@
 {
+  "chatting" : {
+    "LKfJSC8V8LWxNIhbm9mwgsnLkGw1_7JXHJdCLxLY15LEdPucGjmxHYLx1" : {
+      "allChat" : {
+        "2020-7-30" : {
+          "-MDTPqvuKfvDn4fN7Da3" : {
+            "chatContent" : "Punten dok",
+            "chatDate" : 1596090713481,
+            "chatTime" : "13:31 PM",
+            "sendBy" : "LKfJSC8V8LWxNIhbm9mwgsnLkGw1"
+          },
+          "-MDTQZcaSRf5gpVKdr2a" : {
+            "chatContent" : "Tes",
+            "chatDate" : 1596090900557,
+            "chatTime" : "13:35 PM",
+            "sendBy" : "LKfJSC8V8LWxNIhbm9mwgsnLkGw1"
+          },
+          "-MDTQttg3qNalkhaU-7g" : {
+            "chatContent" : "Siang mas",
+            "chatDate" : 1596090987672,
+            "chatTime" : "13:36 PM",
+            "sendBy" : "7JXHJdCLxLY15LEdPucGjmxHYLx1"
+          },
+          "-MDTR-vqIFEYhG6C2Eih" : {
+            "chatContent" : "Ada yang bisa saya bantu?",
+            "chatDate" : 1596091016480,
+            "chatTime" : "13:36 PM",
+            "sendBy" : "7JXHJdCLxLY15LEdPucGjmxHYLx1"
+          },
+          "-MDTfoPyFAnB-uF4PTia" : {
+            "chatContent" : "Halo",
+            "chatDate" : 1596095159505,
+            "chatTime" : "14:45 PM",
+            "sendBy" : "LKfJSC8V8LWxNIhbm9mwgsnLkGw1"
+          },
+          "-MDTgNSTLvmzjxziwsHB" : {
+            "chatContent" : "Tes",
+            "chatDate" : 1596095307151,
+            "chatTime" : "14:48 PM",
+            "sendBy" : "LKfJSC8V8LWxNIhbm9mwgsnLkGw1"
+          }
+        }
+      }
+    },
+    "LKfJSC8V8LWxNIhbm9mwgsnLkGw1_WVx4aCuDGxf9aQj2E0HPyJgt3PA2" : {
+      "allChat" : {
+        "2020-7-30" : {
+          "-MDTUsS3EzvoQWaW906c" : {
+            "chatContent" : "Halo",
+            "chatDate" : 1596092030300,
+            "chatTime" : "13:53 PM",
+            "sendBy" : "LKfJSC8V8LWxNIhbm9mwgsnLkGw1"
+          },
+          "-MDTUv6Ul_JC9S3FIgMF" : {
+            "chatContent" : "Siang",
+            "chatDate" : 1596092041217,
+            "chatTime" : "13:54 PM",
+            "sendBy" : "WVx4aCuDGxf9aQj2E0HPyJgt3PA2"
+          },
+          "-MDTVvWiIr3Y7LRUxGr_" : {
+            "chatContent" : "Mau nanya dok",
+            "chatDate" : 1596092305041,
+            "chatTime" : "13:58 PM",
+            "sendBy" : "LKfJSC8V8LWxNIhbm9mwgsnLkGw1"
+          },
+          "-MDTa9BYULAbsfv6tH4u" : {
+            "chatContent" : "Saya udah 5 hari nggak bisa tidur, udah minum obat tidur juga sama aja",
+            "chatDate" : 1596093675844,
+            "chatTime" : "14:21 PM",
+            "sendBy" : "LKfJSC8V8LWxNIhbm9mwgsnLkGw1"
+          },
+          "-MDTgUFChWRFG3r9kOfb" : {
+            "chatContent" : "Tes",
+            "chatDate" : 1596095334975,
+            "chatTime" : "14:48 PM",
+            "sendBy" : "LKfJSC8V8LWxNIhbm9mwgsnLkGw1"
+          }
+        }
+      }
+    }
+  },
   "doctor_categories" : [ {
     "category" : "dokter umum",
     "id" : 1
@@ -119,6 +199,34 @@
       "str_number" : "616329232",
       "uid" : "lZaDyluZDfSlpLMGPWjXpqqFaAr1",
       "university" : "universitas indonesia"
+    }
+  },
+  "messages" : {
+    "7JXHJdCLxLY15LEdPucGjmxHYLx1" : {
+      "LKfJSC8V8LWxNIhbm9mwgsnLkGw1_7JXHJdCLxLY15LEdPucGjmxHYLx1" : {
+        "lastChatDate" : 1596095307151,
+        "lastContentChat" : "Tes",
+        "uidPartner" : "LKfJSC8V8LWxNIhbm9mwgsnLkGw1"
+      }
+    },
+    "LKfJSC8V8LWxNIhbm9mwgsnLkGw1" : {
+      "LKfJSC8V8LWxNIhbm9mwgsnLkGw1_7JXHJdCLxLY15LEdPucGjmxHYLx1" : {
+        "lastChatDate" : 1596095307151,
+        "lastContentChat" : "Tes",
+        "uidPartner" : "7JXHJdCLxLY15LEdPucGjmxHYLx1"
+      },
+      "LKfJSC8V8LWxNIhbm9mwgsnLkGw1_WVx4aCuDGxf9aQj2E0HPyJgt3PA2" : {
+        "lastChatDate" : 1596095334975,
+        "lastContentChat" : "Tes",
+        "uidPartner" : "WVx4aCuDGxf9aQj2E0HPyJgt3PA2"
+      }
+    },
+    "WVx4aCuDGxf9aQj2E0HPyJgt3PA2" : {
+      "LKfJSC8V8LWxNIhbm9mwgsnLkGw1_WVx4aCuDGxf9aQj2E0HPyJgt3PA2" : {
+        "lastChatDate" : 1596095334975,
+        "lastContentChat" : "Tes",
+        "uidPartner" : "LKfJSC8V8LWxNIhbm9mwgsnLkGw1"
+      }
     }
   },
   "news" : [ {
