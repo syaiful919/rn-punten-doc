@@ -8,7 +8,6 @@ import ImagePicker from 'react-native-image-picker';
 
 const UploadPhoto = ({navigation, route}) => {
   const {fullName, profession, uid} = route.params;
-
   const [hasPhoto, setHasPhoto] = useState(false);
   const [photo, setPhoto] = useState(ILNullPhoto);
   const [photoForDB, setPhotoForDB] = useState('');

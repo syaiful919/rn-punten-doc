@@ -2,7 +2,6 @@ import React from 'react';
 import {StyleSheet, Text, View, Image} from 'react-native';
 import {colors, fonts} from '../../../utils';
 import {Button} from '../../atoms';
-import {DummyDoctor9} from '../../../assets';
 
 const DarkProfile = ({onPress, title, desc, photo}) => {
   return (

@@ -49,8 +49,6 @@ const Chatting = ({navigation, route}) => {
       });
   }, [user.uid, dataDoctor.data.uid]);
 
-  const getDataChat = useCallback(() => {}, []);
-
   const getDataUserFromLocal = () => {
     getData('user').then((res) => {
       setUser(res);

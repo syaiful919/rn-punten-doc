@@ -9,13 +9,11 @@ const Splash = ({navigation}) => {
     const unsubscribe = Fire.auth().onAuthStateChanged((user) => {
       setTimeout(() => {
         if (user) {
-          console.log('>>> user', user);
           navigation.replace('MainApp');
         } else {
-          console.log('>>> user not found');
           navigation.replace('GetStarted');
         }
-      }, 3000);
+      }, 500);
     });
 
     return () => unsubscribe();

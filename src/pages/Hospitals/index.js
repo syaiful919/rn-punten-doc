@@ -33,7 +33,7 @@ const Hospitals = () => {
     <View style={styles.page}>
       <ImageBackground source={ILHospitalBG} style={styles.background}>
         <Text style={styles.title}>Nearby Hospitals</Text>
-        <Text style={styles.desc}>3 tersedia</Text>
+        <Text style={styles.desc}>{hospitals.length} tersedia</Text>
       </ImageBackground>
       <View style={styles.content}>
         {hospitals.map((item) => {
