@@ -1,5 +1,5 @@
 import ILLogo from './logo.svg';
-import ILGetStarted from './get-started.png';
+import ILGetStarted from './get-started.jpg';
 import ILNullPhoto from './null-photo.png';
 import ILCatUmum from './cat-dok-umum.svg';
 import ILCatPsikiater from './cat-dok-psikiater.svg';
